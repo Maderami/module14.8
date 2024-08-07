@@ -10,6 +10,7 @@ class User
     function getUsersList()
     {
         $usersList = User::csvstrRead();
+        return $usersList;
     }
     function getCurrentUser() {
 
@@ -24,15 +25,16 @@ class User
         $csv_line = stream_get_contents($f);
         return rtrim($csv_line);
     }
-    function csvstrRead(array $fields) : string
+    function csvstrRead()
     {
-        $f = fopen('users.csv', 'r+');
-        if (fputcsv($f, $fields) === false) {
-            return false;
+        $lines = file('userslist.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+// fill the array
+        $arr = array();
+        foreach($lines as $line) {
+            $arr[$line] = $line;
         }
-        rewind($f);
-        $csv_line = stream_get_contents($f);
-        return rtrim($csv_line);
+        return $arr;
     }
     function addUser($login, $password, $createdate, $email, $iduser){
             $this->login = $login;
