@@ -35,11 +35,12 @@ $auth = $_SESSION['auth'] ?? null;
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="/assets/icons/person-circle.svg"/>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <p><?php if (isset($_SESSION['login'])) {
                                 echo $_SESSION['login'];
                             } else { ?><?php } ?></p>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
                         <?php if ($auth) { ?>
                             <li><a class="dropdown-item" href="#">Мой профиль</a></li>
                             <li><a class="dropdown-item" href="#">Настройки профиля</a></li>

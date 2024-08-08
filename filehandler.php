@@ -5,12 +5,12 @@ class Files{
     private $usersMain = array();
     public function getUserListOFile($filename){
         foreach(explode('|', file_get_contents($filename)) AS $str) {
-            $users[] = array_combine(array('login','id','password'), explode(';', $str));
-            foreach($users as $key=>$value){
-                $usersMain[$users[$key]['login']] = array('id'=>$users[$key]['id'],'password'=>$users[$key]['password']);
+            $this->users[] = array_combine(array('login','id','password','birthday'), explode(';', $str));
+            foreach($this->users as $key=>$value){
+                $this->usersMain[$this->users[$key]['login']] = array('id'=>$this->users[$key]['id'],'password'=>$this->users[$key]['password'], 'birthday'=>$this->users[$key]['birthday']);
             };
         }
-        return $usersMain;
+        return $this->usersMain;
     }
 }
 ?>
