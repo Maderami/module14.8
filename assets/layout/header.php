@@ -1,4 +1,5 @@
 <?php // Стартуем сессию:
+
 session_start();
 $auth = $_SESSION['auth'] ?? null;
 ?>

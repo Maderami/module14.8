@@ -43,26 +43,20 @@
 </footer>
 </body>
 </html>
-<script type="text/javascript">
-    // функция, которая запрашивает данные с сервера
-    function timer(){
-        // вызываем встроенную функцию, которая поможет нам получить данные с сервера
-        $.ajax({
-            // какой скрипт серверу нужно выполнить
-            url: "timer.php",
-            // предыдущие ответы не сохраняем
-            cache: false,
-            // если всё хорошо, отправляем ответ от сервера на страницу в блок content
-            success: function(html){
-                $("#content").html(html);
-            }
-        });
-    }
-
-    // как только страница полностью загрузилась
-    $(document).ready(function(){
-        // начинаем каждую секунду запрашивать новые данные для отсчёта
-        timer();
-        setInterval('timer()',1000);
-    });
+<script>
+    var countDownTimer = new Date("<?php echo "$getDateTime"; ?>").getTime();
+    var interval = setInterval(function() {
+        var current = new Date().getTime();
+        var diff = countDownTimer - current;
+        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById("counter").innerHTML = days + "Day : " + hours + "h " +
+            minutes + "m " + seconds + "s ";
+        if (diff < 0) {
+            clearInterval(interval);
+            document.getElementById("counter").innerHTML = "EXPIRED";
+        }
+    }, 1000);
 </script>

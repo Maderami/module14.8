@@ -13,8 +13,8 @@ $usersList = $usersList->getUserListOFile('userslist.txt');
                 <div class="card-header">
                     <img class="card-img" src="/assets/images/spa01.jpeg">
                 </div>
-                <div class="card-body"><h3>Термальный массаж</h3></div>
-                <div class="card-footer"><input class="btn btn-info" value="Узнать подробно"/></div>
+                <div class="card-body justify-content-center m-auto "><h3>Термальный массаж</h3></div>
+                <div class="card-footer "><input class="btn btn-info" value="Узнать подробно"/></div>
             </div>
         </div>
         <div class="col col-lg-4">
@@ -87,13 +87,14 @@ $usersList = $usersList->getUserListOFile('userslist.txt');
                 </div>
                 <div class="card-body">
                     <h3>Термальный массаж</h3>
-                    <p>30% на массаж в данной категории. Торопитесь акция длится неделю</p>
+                    <p>30% на массаж в данной категории. <?php require_once 'timeraction.php';?></p>
                 </div>
                 <div class="card-footer"><input class="btn btn-info" value="Узнать подробно"/></div>
             </div>
         </div><?}?>
         <?php
         $dateNowEnd = date("j")+2;
+        if($auth){
         if(date('d.m', time())==$usersList[$_SESSION['login']]['birthday'] and date('j', time())<=$dateNowEnd){?>
         <div class="col col-lg-5 justify-content-center m-auto mt-3">
             <div class="card">
@@ -107,11 +108,12 @@ $usersList = $usersList->getUserListOFile('userslist.txt');
                 <div class="card-footer"><input class="btn btn-info" value="Узнать подробно"/><p>
                         До конца акции осталось:
                     </p>
+                    <h2 id="counter" class="text-center"></h2>
                 <span>
 
                 </span></div>
             </div>
-        </div><?}?>
+        </div><?}}?>
     </div>
 </div>
 <?php
