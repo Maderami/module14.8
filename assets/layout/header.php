@@ -15,7 +15,7 @@ $auth = $_SESSION['auth'] ?? null;
             <a class="navbar-brand" href="#">SPA-salon</a>
             <ul class="nav ">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                    <a class="nav-link" aria-current="page" href="index.php">Главная</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Наши услуги</a>
@@ -24,35 +24,40 @@ $auth = $_SESSION['auth'] ?? null;
                     <a class="nav-link" href="#">Акции</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Фотогалерея</a>
+                    <a  class="nav-link" href="#">Фотогалерея</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Контакты</a>
+                    <a  class="nav-link" href="#">Контакты</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">О нас</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="/assets/icons/person-circle.svg"/>
-                        <p><?php if (isset($_SESSION['login'])) {
-                                echo $_SESSION['login'];
-                            } else { ?><?php } ?></p>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <img class="nav-item" style="width: 100%; text-align: center; margin: auto;" src="/assets/icons/person-circle.svg"/>
+                        </div>
+                        <div class="col-lg-7 justify-content-end m-auto">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php if (isset($_SESSION['login'])) {
+                                        echo $_SESSION['login'];
+                                    } else { ?><?php } ?>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <?php if ($auth) { ?>
+                                    <li><a class="dropdown-item" href="#">Мой профиль</a></li>
+                                    <li><a class="dropdown-item" href="#">Настройки профиля</a></li>
+                                    <li><a class="dropdown-item" href="#">Мое бронирование</a></li>
+                                    <li><a class="dropdown-item" href="logout.php?do=exit">Выйти</a>
+                                    </li><?php } elseif (!$auth) { ?>
+                                    <li><a class="dropdown-item" href="/login.php">Войти</a></li>
+                                    <li><a class="dropdown-item" href="/signup.php">Регистрация</a></li>
+                                <?php } ?>
 
-                        <?php if ($auth) { ?>
-                            <li><a class="dropdown-item" href="#">Мой профиль</a></li>
-                            <li><a class="dropdown-item" href="#">Настройки профиля</a></li>
-                            <li><a class="dropdown-item" href="#">Мое бронирование</a></li>
-                            <li><a class="dropdown-item" href="logout.php?do=exit">Выйти</a>
-                            </li><?php } elseif (!$auth) { ?>
-                            <li><a class="dropdown-item" href="/login.php">Войти</a></li>
-                            <li><a class="dropdown-item" href="/signup.php">Регистрация</a></li>
-                        <?php } ?>
-
-                    </ul>
+                            </ul>
+                        </div>
+                   </div>
                 </li>
             </ul>
 

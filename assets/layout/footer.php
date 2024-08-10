@@ -1,8 +1,9 @@
-
 <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
     <div class="col mb-3">
         <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
         </a>
         <p class="text-body-secondary">SPA-salon © 2024</p>
     </div>
@@ -35,9 +36,15 @@
     <div class="col mb-3">
         <h5>Быстрая связь</h5>
         <ul class="nav flex-row">
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><img class = "icon-link w-25" src="/assets/images/vk.png"/></a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><img class = "icon-link w-25" src="/assets/images/tg.png"/></a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><img class = "icon-link w-25" src="/assets/images/instlog.png"/></a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><img class="icon-link w-25"
+                                                                                                src="/assets/images/vk.png"/></a>
+            </li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><img class="icon-link w-25"
+                                                                                                src="/assets/images/tg.png"/></a>
+            </li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"><img class="icon-link w-25"
+                                                                                                src="/assets/images/instlog.png"/></a>
+            </li>
         </ul>
     </div>
 </footer>
@@ -45,7 +52,7 @@
 </html>
 <script>
     var countDownTimer = new Date("<?php echo "$getDateTime"; ?>").getTime();
-    var interval = setInterval(function() {
+    var interval = setInterval(function () {
         var current = new Date().getTime();
         var diff = countDownTimer - current;
         var days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -59,10 +66,8 @@
             document.getElementById("counter").innerHTML = "Таймер истек";
         }
     }, 1000);
-</script>
-<script>
     var countDownTimerOneDay = new Date("<?php echo "$getDateTimeOneDay"; ?>").getTime();
-    var intervalOneDay = setInterval(function() {
+    var intervalOneDay = setInterval(function () {
         var current = new Date().getTime();
         var diff = countDownTimerOneDay - current;
         var days = Math.floor(diff / (1000 * 60 * 60 * 24));
