@@ -56,7 +56,24 @@
             minutes + "m " + seconds + "s ";
         if (diff < 0) {
             clearInterval(interval);
-            document.getElementById("counter").innerHTML = "EXPIRED";
+            document.getElementById("counter").innerHTML = "Таймер истек";
+        }
+    }, 1000);
+</script>
+<script>
+    var countDownTimerOneDay = new Date("<?php echo "$getDateTimeOneDay"; ?>").getTime();
+    var intervalOneDay = setInterval(function() {
+        var current = new Date().getTime();
+        var diff = countDownTimerOneDay - current;
+        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById("counter1").innerHTML = days + "Day : " + hours + "h " +
+            minutes + "m " + seconds + "s ";
+        if (diff < 0) {
+            clearInterval(interval);
+            document.getElementById("counter1").innerHTML = "Таймер истек";
         }
     }, 1000);
 </script>

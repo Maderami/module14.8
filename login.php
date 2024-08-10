@@ -13,9 +13,9 @@ $usersList = new Files();
 $usersList = $usersList->getUserListOFile('userslist.txt');
 
 if (null !== $username || null !== $password) {
-
+    $pass = md5($password);
     // Если пароль из базы совпадает с паролем из формы
-    if ($password === $usersList[$username]['password']) {
+    if ($pass === $usersList[$username]['password']) {
 
 
         // Пишем в сессию информацию о том, что мы авторизовались:
@@ -24,6 +24,7 @@ if (null !== $username || null !== $password) {
         // Пишем в сессию логин и id пользователя
         $_SESSION['id'] = $usersList[$username]['id'];
         $_SESSION['login'] = $username;
+        $_SESSION['date'] = date("d.m.y", time());
 
     }
 }
